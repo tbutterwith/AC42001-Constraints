@@ -1,0 +1,31 @@
+language ESSENCE' 1.0
+
+find D1 : matrix indexed by [int(1..6)] of int(1..6)
+find D2 : matrix indexed by [int(1..6)] of int(1..6)
+find D3 : matrix indexed by [int(1..6)] of int(1..6)
+
+such that
+	
+	D1[1] > D2[1],
+	D1[2] > D2[2],
+	D1[3] > D2[3],
+	D1[4] > D2[4],
+
+	D2[3] > D3[3],
+	D2[4] > D3[4],
+	D2[5] > D3[5],
+	D2[6] > D3[6],
+
+	D3[5] > D1[5],
+	D3[6] > D1[6],
+	D3[1] > D1[1],
+	D3[2] > D1[2],
+
+	forAll i,j : int(1..6) .
+			D1[i] != D2[j],
+
+	forAll i,j : int(1..6) .
+			D2[i] != D3[j],
+
+	forAll i,j : int(1..6) .
+			D3[i] != D1[j]
