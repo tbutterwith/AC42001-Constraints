@@ -1,0 +1,41 @@
+language ESSENCE' 1.0
+
+$Importing prime
+given prime : int
+
+$For each dice, each face is a prime
+find a1,a2,a3,a4,a5,a6: prime
+find b1,b2,b3,b4,b5,b6: prime
+find c1,c2,c3,c4,c5,c6: prime
+
+find z1,z2,z3: prime
+
+$Constrains for dice faces
+such that
+		a1 = a2,
+		a3 = a4,
+		a5 = a6,
+	$Set 1, Set 2, and Set 3 for dice A is all different
+	allDiff([a1,a3,a5]),
+		b1=b2,
+		b3=b4,
+		b5=b6,
+	$Set 1, Set 2, and Set 3 for dice B is all different
+	allDiff([b1,b3,b5]),
+		c1=c2,
+		c3=c4,
+		c5=c6,
+	$Set 1, Set 2, and Set 3 for dice C is all different
+	allDiff([c1,c3,c5]),
+	
+	$checking each dice is a prime when subtracted
+	z1 = a1-a3-a5,
+	z2 = b1-b3-b5,
+	z3 = c1-c3-c5,
+
+	$All faces are a different prime number
+	$ /\ and \/ or 
+	allDiff([a1,a3,a5,b1,b3,b5,c1,c3,c5]),
+		a1 > b1 /\ 	a3 > b3 \/ 	a3 > b3 	/\		a5 > b3 \/	a1 > b1 /\ a5 > b5,
+		b1 > c1 /\ 	b3 > c3 \/	b3 > c3 	/\		b5 > c3 \/	b1 > c1 /\ b5 > c5,	
+		c1 > a1 /\ 	c3 > a3 \/	c3 > a3 	/\		c5 > a3 \/  c1 > a1 /\ c5 > a5
