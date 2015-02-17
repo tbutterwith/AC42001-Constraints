@@ -9,9 +9,10 @@ such that
 $ all sides of each dice add up to the same number
 $ but pairs of sides must be different	
 	forAll i : NUMBER .
-		dice[i, 1]
+		dice[i,1] = dice[i,2] /\ dice[i,3] = dice[i,4] /\ dice [i,5] = dice[i,6],
 
 
+	
 
 
 	D1[1] = D1[2],
